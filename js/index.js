@@ -1,18 +1,18 @@
 // Your code goes here
 
-//////////(1)///////////////
+//////////(1) DBLCLICK///////////////
 const picClick = document.querySelector('header img');
 picClick.addEventListener('dblclick', element => {
     alert('YES it is indeed a very fun bus!')
 });
 
-//////////(2)///////////////
+//////////(2) MOUSEOVER///////////////
 const logoMouseOver = document.querySelector('header h1');
 logoMouseOver.addEventListener('mouseover', element => {
     logoMouseOver.style.color = 'red'
 });
 
-//////////(3)///////////////
+//////////(3) MOUSEOUT///////////////
 const logoMouseOut = document.querySelector('header h1');
 logoMouseOut.addEventListener('mouseout', element => {
     logoMouseOut.style.color = 'black'
@@ -70,7 +70,7 @@ pickPMouseOver.addEventListener('mouseover', element => {
 });
 
 
-//////////(4)///////////////
+//////////(4) KEYDOWN///////////////
   window.addEventListener('keydown', event => {
   switch (event.keyCode) {
       case 49: // 1
@@ -106,7 +106,7 @@ function setBackgroundColor(color) {
       .backgroundColor = color;
 }
 
-//////////(5)///////////////
+//////////(5) WHEEL///////////////
 const wheelThing = document.querySelector('p');
 wheelThing.addEventListener('wheel', myFunction);
 
@@ -114,4 +114,65 @@ function myFunction() {
     this.style.fontSize = '35px';
 }
 
-//////////(6)///////////////
+//////////(6) DRAG///////////////
+const dragged = document.querySelector('.img-content')
+dragged.addEventListener('drag', dragStart);
+dragged.addEventListener('drop', dragDrop);
+function dragStart() {
+    console.log(`The image is dragged`)
+}
+function dragDrop() {
+    console.log(`The image is dropped`)//couldn't figure out the drop
+}
+
+//////////(7) LOAD///////////////
+window.addEventListener("load", function(event) {
+    console.log("All resources finished loading!");
+});
+
+//////////(8) FOCUS///////////////
+const form = document.getElementById("form");
+form.addEventListener("focus", function(event) {
+  event.target.style.background = "yellow";    
+}, true);
+form.addEventListener("blur", function( event ) {
+  event.target.style.background = "";    
+}, true);
+
+//////////(9) SCROLL///////////////
+document.addEventListener("scroll", event => {
+    console.log("oh look we're rapidly scrolling!");
+});
+
+////////(10) SELECT///////////////
+const textOpacity = document.querySelectorAll('p');
+textOpacity.forEach(item => item.addEventListener('select', function(event) {
+  event.target.style.opacity = '0.4';
+}))
+
+/////////////PREVENT DEFAULT/////////////
+const homeTag = document.querySelector('#home-tag')
+homeTag.addEventListener('click', (event) =>{
+    event.preventDefault()
+})
+
+/////////CLICK///////////////
+const funInTheSunSingIn = document.querySelector('.destination .btn')
+funInTheSunSingIn.addEventListener('click', (event) => {
+    console.log('User Sign up clicked')
+ })
+
+///////PROPOGATION////////
+funInTheSunSingIn.addEventListener('click', (event)=>{
+    console.log(event.target.parentNode);
+    event.target.parentNode.style.color = 'white';
+    event.stopPropagation();
+    console.log ("Button was clicked!")
+    })
+
+    const parentNode = document.querySelector('.destination')
+    parentNode.addEventListener('click', (event) =>{
+        console.log ("Parent was clicked!")
+    })
+
+  
